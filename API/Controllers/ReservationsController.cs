@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,12 +7,13 @@ using Core.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Core.Interfaces;
+using API.Dtos;
 
 namespace API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ReservationsController : ControllerBase
+    public class ReservationsController : BaseApiController
     {
         private readonly IReservationRepository _repo;
         public ReservationsController(IReservationRepository repo)
@@ -20,17 +22,31 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Reservation>>> GetReservations()
+        public async Task<ActionResult<List<ReservationDto>>> GetReservations()
         {
             var reservations = await _repo.GetReservationsAsync();
 
-            return Ok(reservations);
+            return reservations.Select(reservation => new ReservationDto
+            {
+                Id = reservation.Id,
+                TotalPrice = reservation.TotalPrice,
+                StartDate = reservation.StartDate,
+                EndDate = reservation.EndDate
+            }).ToList();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Reservation>> GetReservation(int id)
+        public async Task<ActionResult<ReservationDto>> GetReservation(int id)
         {
-            return await _repo.GetReservationByIdAsync(id);
+            var reservation = await _repo.GetReservationByIdAsync(id);
+
+            return new ReservationDto
+            {
+                Id = reservation.Id,
+                TotalPrice = reservation.TotalPrice,
+                StartDate = reservation.StartDate,
+                EndDate = reservation.EndDate
+            };
         }
     }
 }
