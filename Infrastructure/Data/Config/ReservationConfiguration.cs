@@ -8,9 +8,9 @@ namespace Infrastructure.Data.Config
     {
         public void Configure(EntityTypeBuilder<Reservation> builder)
         {
-            builder.Property(p => p.TotalPrice).IsRequired();
+            builder.Property(p => p.TotalPrice).IsRequired().HasColumnType("decimal(10,2)");
             builder.Property(p => p.StartDate).IsRequired();
-            builder.Property(p => p.EndDate).IsRequired().HasColumnType("decimal(10,2)");
+            builder.Property(p => p.EndDate).IsRequired();
         }
     }
 }

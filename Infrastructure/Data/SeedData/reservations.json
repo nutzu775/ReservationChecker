@@ -1,0 +1,38 @@
+[
+    {
+      "Id": 1,
+      "TotalPrice": 300.5,
+      "StartDate": "2019-01-01",
+      "EndDate": "2019-01-01"
+    },
+    {
+      "Id": 2,
+      "TotalPrice": 35.5,
+      "StartDate": "2019-01-01",
+      "EndDate": "2019-01-01"
+    },
+    {
+      "Id": 3,
+      "TotalPrice": 10.15,
+      "StartDate": "2019-01-01",
+      "EndDate": "2019-01-01"
+    },
+    {
+      "Id": 4,
+      "TotalPrice": 280.4,
+      "StartDate": "2019-01-01",
+      "EndDate": "2019-01-01"
+    },
+    {
+      "Id": 5,
+      "TotalPrice": 1000.15,
+      "StartDate": "2019-01-01",
+      "EndDate": "2019-01-01"
+    },
+    {
+      "Id": 6,
+      "TotalPrice": 435.5,
+      "StartDate": "2020-01-01",
+      "EndDate": "2020-12-01"
+    }
+  ] 
